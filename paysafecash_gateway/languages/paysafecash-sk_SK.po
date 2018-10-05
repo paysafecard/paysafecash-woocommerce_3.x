@@ -1,0 +1,116 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n>=2 && n<=4 ? 1 : 2);\n"
+"Project-Id-Version: Paysafecash\n"
+"POT-Creation-Date: 2018-09-14 11:27+0200\n"
+"PO-Revision-Date: 2018-09-20 11:26+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.1.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: paysafecash_gateway.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Last-Translator: \n"
+"Language: sk_SK\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: paysafecash_gateway.php:32 paysafecash_gateway.php:43
+#: paysafecash_gateway.php:107
+msgid ""
+"Paysafecash is a cash payment option. Generate a QR/barcode and pay at a "
+"nearby shop.More information and our payment points can be found at <a href="
+"\\\"https://www.paysafecash.com\\\" target=\\\"_blank\\\">www.paysafecash."
+"com</a>"
+msgstr ""
+"Paysafecash je hotovostná platobná metóda. Vygeneruj si svoj QR kód/čiarový "
+"kód a zaplať v obchode vo svojej blízkosti. \n"
+"Bližšie informácie a naše partnerské predajne nájdeš na <a href=\\\"https://"
+"www.paysafecash.com\\\" target=\\\"_blank\\\">www.paysafecash.com</a>"
+
+#: paysafecash_gateway.php:80
+msgid ""
+"If the test mode is enabled you are making transactions against paysafecash "
+"test environment. Therefore the test environment API key is necessary to be "
+"set."
+msgstr ""
+
+#: paysafecash_gateway.php:86
+msgid ""
+"This key is provided by the paysafecash support team. There is one key for "
+"the test- and one for production environment."
+msgstr ""
+
+#: paysafecash_gateway.php:91
+msgid ""
+"This field specifies the used Reporting Criteria. You can use this parameter "
+"to distinguish your transactions per brand/URL. Use this field only if "
+"agreed beforehand with the paysafecash support team. The value has to be "
+"configured in both systems."
+msgstr ""
+
+#: paysafecash_gateway.php:96
+msgid ""
+"Please select all countries where paysafecash is live and your webshop is "
+"live. For details about the available countries for paysafecash, please "
+"align with the paysafecash support team."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+#. Author of the plugin/theme
+#: paysafecash_gateway.php:106
+msgid "Paysafecash"
+msgstr ""
+
+#: paysafecash_gateway.php:108
+msgid "<a href=\"/#\">Here</a> you can find the Installation instructions"
+msgstr ""
+
+#: paysafecash_gateway.php:248 paysafecash_gateway.php:296
+#: paysafecash_gateway.php:308
+#, php-format
+msgid ""
+"%s Your payment was successful. Thank you for paying with Paysafecash. "
+"Transaction ID: %s"
+msgstr ""
+"%s Tvoja platba prebehla úspešne. Ďakujeme, že si zaplatil prostredníctvom "
+"Paysafecash. Číslo transakcie: %s"
+
+#: paysafecash_gateway.php:256 paysafecash_gateway.php:258
+msgid "Thank you for your order! Please find the nearest payment point to pay."
+msgstr ""
+"Ďakujeme za objednávku! Na zaplatenie vyhľadaj, prosím, najbližšiu "
+"partnerskú prevádzku."
+
+#: paysafecash_gateway.php:260
+msgid ""
+"Unfortunately, a technical error has occurred. Please try again later or "
+"contact the Support Team."
+msgstr ""
+"Žiaľ, vyskytla sa technická chyba. Prosím, skús to znova neskôr alebo "
+"kontaktuj náš servisný tím."
+
+#: paysafecash_gateway.php:266
+#, php-format
+msgid "%s Payment interrupted! Transaction number: %d"
+msgstr "%s platba je prerušená! Číslo transakcie: %d"
+
+#. Plugin URI of the plugin/theme
+#. Author URI of the plugin/theme
+msgid "https://www.paysafecash.com/en/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"<a href=\"https://www.paysafecash.com\" target=\"_blank\">Paysafecash</a> is "
+"a cash payment option. Generate a QR/barcode and pay at a nearby shop."
+msgstr ""
+"<a href=\"https://www.paysafecash.com\" target=\"_blank\">Paysafecash</a> je "
+"hotovostná platobná metóda. Vygeneruj si svoj QR kód/čiarový kód a zaplať v "
+"obchode vo svojej blízkosti."
