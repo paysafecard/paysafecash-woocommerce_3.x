@@ -76,7 +76,6 @@ function paysafecash_init_gateway_class() {
 
 			add_action( 'plugins_loaded', 'paysafecash_textdomain' );
 
-			add_action( 'wp_enqueue_scripts', array( $this, 'payment_scripts' ) );
 			add_action( 'woocommerce_api_' . strtolower( get_class( $this ) ), array( $this, 'callback_handler' ) );
 
 			add_action( 'woocommerce_thankyou_paysafecash', array( $this, 'check_response' ) );
@@ -417,9 +416,9 @@ function paysafecash_init_gateway_class() {
 			}
 
 			$pscpayment       = new PaysafecardCashController( $this->api_key, $env );
-			$success_url      = $order->get_checkout_order_received_url() . "&paysafecash=true&success=true&payment_id={payment_id}";
+			$success_url      = $order->get_checkout_order_received_url() . "&paysafecash=true&success=true&order_id=".$order->get_order_number()."&payment_id={payment_id}";
 			$failure_url      = $order->get_checkout_payment_url() . "&paysafecash=false&failed=true&payment_id={payment_id}";
-			$notification_url = $this->get_return_url( $order ) . "&wc-api=wc_paysafecash_gateway&payment_id={payment_id}";
+			$notification_url = $this->get_return_url( $order ) . "&wc-api=wc_paysafecash_gateway&order_id=".$order->get_order_number()."&payment_id={payment_id}";
 
 			$customerhash = "";
 
@@ -504,9 +503,15 @@ function paysafecash_init_gateway_class() {
 					return;
 				}
 
+				if ( $this->testmode ) {
+					$env = "TEST";
+				} else {
+					$env = "PRODUCTION";
+				}
+
 				$this->init_settings();
 				$this->api_key = $this->settings['api_key'];
-				$pscpayment    = new PaysafecardCashController( $this->api_key, "TEST" );
+				$pscpayment    = new PaysafecardCashController( $this->api_key, $env );
 				$response      = $pscpayment->retrievePayment( $payment_id );
 
 				if ( $response == false ) {
@@ -544,18 +549,29 @@ function paysafecash_init_gateway_class() {
 			}
 		}
 
+		public function payment_scripts(){
+
+		}
+
 		public function callback_handler() {
 			global $woocommerce;
 
-
 			$payment_id = $_GET['payment_id'];
-			$order_id   = $_GET['order-received'];
+			$order_id   = $_GET['order_id'];
+
+			exec('echo "'.print_r($_GET, true).'" >> /tmp/wp.log');
 
 			$this->init_settings();
 			$this->api_key        = $this->settings['api_key'];
 			$this->submerchant_id = $this->settings['submerchant_id'];
 
-			$pscpayment = new PaysafecardCashController( $this->api_key, "TEST" );
+			if ( $this->testmode ) {
+				$env = "TEST";
+			} else {
+				$env = "PRODUCTION";
+			}
+
+			$pscpayment = new PaysafecardCashController( $this->api_key, $env );
 			$response   = $pscpayment->retrievePayment( $payment_id );
 
 			$order = wc_get_order( $order_id );
