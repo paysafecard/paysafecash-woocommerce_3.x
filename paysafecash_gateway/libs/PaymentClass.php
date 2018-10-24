@@ -249,10 +249,7 @@ class PaysafecardCashController
 			$headers = [];
 		}
 		$this->url = $this->url . $payment_id . "/refunds";
-		exec( 'echo "'.print_r($this->url, true). '" >> /tmp/wp.log');
-		exec( 'echo "'.print_r($jsonarray, true). '" >> /tmp/wp.log');
 		$this->doRequest($jsonarray, "POST", $headers);
-		exec( 'echo "'.print_r($this->response, true). '" >> /tmp/wp.log');
 		return $this->response;
 	}
 
