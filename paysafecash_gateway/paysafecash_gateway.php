@@ -6,7 +6,7 @@
  * Author: Paysafecash
  * Text Domain: paysafecash
  * Author URI: https://www.paysafecash.com/en/
- * Version: 1.0.3
+ * Version: 1.0.4
  *
 */
 include( plugin_dir_path( __FILE__ ) . 'libs/PaymentClass.php' );
@@ -60,7 +60,7 @@ function paysafecash_init_gateway_class() {
 			$this->icon               = '';
 			$this->has_fields         = true;
 			$this->method_title       = 'Paysafecash';
-			$this->method_description = __( 'Paysafecash is a cash payment option. Generate a QR/barcode and pay at a nearby shop.More information and our payment points can be found at <a href=\"https://www.paysafecash.com\" target=\"_blank\">www.paysafecash.com</a>', 'paysafecash' );
+			$this->method_description = __( 'PAY WITH CASH: Generate a barcode and go to a <a href="https://www.paysafecash.com/pos" target="blank">payment point near you</a> to complete the payment.', 'paysafecash' );
 			$this->description        = $this->method_description;
 			$this->version            = "1.0.3";
 			$this->supports           = array(
@@ -71,7 +71,7 @@ function paysafecash_init_gateway_class() {
 			$this->init_form_fields();
 			$this->init_settings();
 			$this->title           = "Paysafecash";
-			$this->description     = __( '<a href=\"https://www.paysafecash.com\" target=\"_blank\">Paysafecash</a> is a cash payment option. Generate a QR/barcode and pay at a nearby shop.', 'paysafecash' );
+			$this->description     = __( 'PAY WITH CASH: Generate a barcode and go to a <a href="https://www.paysafecash.com/pos" target="blank">payment point near you</a> to complete the payment.', 'paysafecash' );
 			$this->enabled         = $this->get_option( 'enabled' );
 			$this->testmode        = 'yes' === $this->get_option( 'testmode' );
 			$this->private_key     = $this->testmode ? $this->get_option( 'api_test_key' ) : $this->get_option( 'api_test_key' );
@@ -417,7 +417,7 @@ function paysafecash_init_gateway_class() {
 
 			$order = wc_get_order( $order_id );
 
-			if ( $this->testmode ) {
+			if ( $this->testmode == "yes") {
 				$env = "TEST";
 			} else {
 				$env = "PRODUCTION";
@@ -437,6 +437,7 @@ function paysafecash_init_gateway_class() {
 			}
 
 			$response = $pscpayment->initiatePayment( $order->get_total(), $order->get_currency(), $customerhash, $order->get_customer_ip_address(), $success_url, $failure_url, $notification_url, $correlation_id = "", $country_restriction = "", $kyc_restriction = "", $min_age = "", $shop_id = "Woocommerce: " . $woocommerce->version . " | " . $this->version, $this->submerchant_id );
+
 
 			if ( isset( $response["object"] ) ) {
 				return array(
